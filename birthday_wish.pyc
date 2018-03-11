@@ -1,0 +1,20 @@
+from facepy import GraphAPI
+import datetime
+
+def wish_bday():
+    for friend in friends['data']:
+        if friend['birthday']:
+            bday=friend['birthday'].split('/')
+            if bday[0]==month and bday[1]==day:
+                graph.post(friend['id']+'/feed',0,message=wish)
+
+access_token='EAAFTcM7thx8BAHppr8SgFjdyJ6trRNmM5ZC7wsJmAWru3qOt5VB8NAnjYF39pZC3ZCip7x16ZCsyRNgS9fjppEaZBRo6TtCyqC8Ybi45s47AuFEZCa3fbpFhZBZCacNZB9tdVW4UdZBeHvdQyLqUzHwurx5ljE1MnFDBwJhiqBTJW6AQnarH7QDNrckOZA1FgmbZCeuvpESDsqX7NgZDZD'
+oauth='FB_API_KEY'
+graph=GraphAPI(oauth)
+friends=graph.get('me/friends?fields=birthday,name')
+wish=['Thank You for being in my life, Happy Birthday!!!']
+day=datetime.datetime.now().day
+month=datetime.datetime.now().month
+
+if __name__='__main__':
+    wish_bday()
